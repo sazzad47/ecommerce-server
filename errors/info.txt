@@ -1,0 +1,29 @@
+Custom Error Classes and Export Explanation
+
+the code demonstrates a well-structured approach to creating custom error classes for handling specific error scenarios. These custom error classes extend from a base error class and provide unique HTTP status codes to indicate the nature of the error. Additionally, export methods maintain an organized structure for using these custom error classes throughout your application.
+
+1. Creating Custom Error Classes:
+You have a modular approach to defining custom error classes. Each error class extends a base error class, CustomError, and sets an appropriate HTTP status code. This allows you to differentiate between various types of errors based on their status codes.
+
+2. Importing Dependencies:
+ import necessary dependencies, such as CustomError and http-status-codes, to use in creating custom error classes and defining their behavior.
+
+3. Defining Custom Error Classes:
+For each custom error type, create a new class that extends the CustomError class. This inheritance ensures that your error classes share common behavior while allowing you to customize status codes and error messages.
+
+4. Setting HTTP Status Codes:
+Within each custom error class constructor, you set the HTTP status code using constants from the http-status-codes module. This status code helps convey the type and severity of the error to the client.
+
+5. Exporting Custom Error Classes:
+ maintain a separate file to export all your custom error classes. This export file provides a central location to access your error classes throughout your application. This structured approach helps ensure consistency and simplifies the process of using custom errors.
+
+6. Explanation of Export Methods:
+In the export file, group related custom error classes together using object notation. This makes it clear which error classes are available and what they represent. Developers using these classes can easily access them by importing the appropriate error class from the export file.
+
+7. Encapsulation of Error Handling:
+By encapsulating error handling logic within custom error classes, you make your codebase more modular and maintainable. Each error class contains specific information about the error type, message, and status code, streamlining the error-handling process.
+
+8. Reusability and Consistency:
+the code style promotes reusability and consistency by offering a clear and standardized way to handle different types of errors across your application. 
+This approach enhances code readability and maintenance.
+

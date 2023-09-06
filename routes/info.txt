@@ -1,0 +1,28 @@
+Route File Code Style Explanation
+
+route files follow a structured and organized style that enhances readability and maintainability.
+The code is divided into distinct sections, each serving a specific purpose. This approach makes it easy to understand the purpose of each route, the controllers associated with them, and the overall flow of your application.
+
+1. Import Dependencies:
+At the beginning of each route file, i import the required dependencies using the require function. This makes the code modular and allow to access the necessary functionalities provided by the imported modules.
+
+2. Define Router:
+i create an instance of the Express Router using express.Router(). This router acts as a mini express app that can be used to define route handlers and middleware for specific paths.
+
+3. Import Controllers:
+route files are well-organized as they import controllers responsible for handling specific functionalities. This separation of concerns ensures that your route handlers focus solely on routing logic, while the controllers handle the business logic associated with each route.
+
+4. Define Routes:
+Routes are defined using the .route() method on the router instance. This method allows you to chain HTTP methods (e.g., post, get, put, delete) for a single route path. It helps in avoiding code duplication and maintaining consistency across routes that share the same path.
+
+5. Chain Middleware and Controllers:
+i use the .post(), .get(), .put(), and .delete() methods to chain middleware functions and controller functions for specific HTTP methods. This approach enhances code readability by explicitly showing which middleware and controllers are associated with each route and method.
+
+6. Export Router:
+At the end of each route file, i export the router using module.exports = router;. 
+This modular approach allows you to use these route definitions in other parts of your application, keeping your codebase organized.
+
+7. Additional Notes:
+
+i've applied meaningful names to both your routes and controllers, making it easy to understand the purpose of each route.
+if you found in any controller (req.anything) you should track in the route file of this controller how the controllers and middlewares are ordered
