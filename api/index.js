@@ -6,24 +6,24 @@ const app = express();
 const cors = require("cors"); // Enable Cross-Origin Resource Sharing (CORS)
 const port = process.env.PORT || 5000; // Get the port from environment variables or use 5000 as default
 
-const sequelize = require("./database/connect"); // Sequelize database connection
+const sequelize = require("../database/connect"); // Sequelize database connection
 const bodyParser = require("body-parser"); // Parse request bodies
 
 // Import middleware and routers
-const errorHandlerMiddleware = require("./middlewares/errorHandler");
-const notFound = require("./middlewares/notFound");
-const categoryRouter = require("./routes/Category");
-const productRouter = require("./routes/Product");
-const PropertyRouter = require("./routes/Property");
-const ChangealbePropertyRouter = require("./routes/ChangeableProperty");
-const UsersRouter = require("./routes/User");
-const CartRouter = require("./routes/Cart");
-const connectRouter = require("./routes/Connect");
-const orderRouter = require("./routes/Order");
-const dashboardRouter = require("./routes/Dashboard");
-const adminRouter = require("./routes/Admin");
-const InitialRouter = require("./routes/Initial");
-const RecommendationRouter = require("./routes/Recommendation");
+const errorHandlerMiddleware = require("../middlewares/errorHandler");
+const notFound = require("../middlewares/notFound");
+const categoryRouter = require("../routes/Category");
+const productRouter = require("../routes/Product");
+const PropertyRouter = require("../routes/Property");
+const ChangealbePropertyRouter = require("../routes/ChangeableProperty");
+const UsersRouter = require("../routes/User");
+const CartRouter = require("../routes/Cart");
+const connectRouter = require("../routes/Connect");
+const orderRouter = require("../routes/Order");
+const dashboardRouter = require("../routes/Dashboard");
+const adminRouter = require("../routes/Admin");
+const InitialRouter = require("../routes/Initial");
+const RecommendationRouter = require("../routes/Recommendation");
 
 app.use(express.json()); // Parse JSON request bodies
 app.use(bodyParser.urlencoded({ extended: false })); // Parse URL-encoded request bodies
@@ -52,26 +52,26 @@ app.use(errorHandlerMiddleware);
 // Define database models and relationships
 const defineModels = () => {
   const modelDefiners = [
-    require("./database/models/category"),
-    require("./database/models/product"),
-    require("./database/models/product_images"),
-    require("./database/models/property"),
-    require("./database/models/property_values"),
-    require("./database/models/category_property"),
-    require("./database/models/product_properties"),
-    require("./database/models/changeable_property"),
-    require("./database/models/changble_property_values"),
-    require("./database/models/user"),
-    require("./database/models/cart"),
-    require("./database/models/cartItems"),
-    require("./database/models/users_cart"),
-    require("./database/models/adress"),
-    require("./database/models/order"),
-    require("./database/models/Order_items"),
-    require("./database/models/admins"),
-    require("./database/models/slider_images"),
-    require("./database/models/site_pages"),
-    require("./database/models/recommendations"),
+    require("../database/models/category"),
+    require("../database/models/product"),
+    require("../database/models/product_images"),
+    require("../database/models/property"),
+    require("../database/models/property_values"),
+    require("../database/models/category_property"),
+    require("../database/models/product_properties"),
+    require("../database/models/changeable_property"),
+    require("../database/models/changble_property_values"),
+    require("../database/models/user"),
+    require("../database/models/cart"),
+    require("../database/models/cartItems"),
+    require("../database/models/users_cart"),
+    require("../database/models/adress"),
+    require("../database/models/order"),
+    require("../database/models/Order_items"),
+    require("../database/models/admins"),
+    require("../database/models/slider_images"),
+    require("../database/models/site_pages"),
+    require("../database/models/recommendations"),
   ];
 
   for (const modelDefiner of modelDefiners) {
