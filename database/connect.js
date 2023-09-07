@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 const host = process.env.RDS_HOST;
-const port = 7517; // Database current port
+const port = 7362; // Database current port
 const database = "railway";
 const username = process.env.RDS_USER;
 const password = process.env.RDS_PASSWORD;
@@ -17,7 +17,8 @@ const sequelize = new Sequelize(database, username, password, {
   port: port,
   omitNull: true, // Omit null values from INSERT and UPDATE queries
   autoIncrement: true, // Enable auto-increment for primary keys
-  logging: false, // Disable logging SQL queries to the console
+  // logging: false, // Disable logging SQL queries to the console
+  logging: console.log, // Log SQL queries to the console
   dialectOptions: {
     prependSearchPath: true, // Prepend the schema name in queries
   },

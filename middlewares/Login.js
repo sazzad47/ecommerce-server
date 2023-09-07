@@ -4,6 +4,9 @@ const { models } = require("../database/connect");
 const { isHere } = require("../helpers/Validation");
 const bcrypt = require("bcryptjs");
 
+const sequelize = require("../database/connect");
+
+
 // Middleware to check if a user with the provided email exists
 const CheckEmail = async (req, res, next) => {
   const { email } = req.body;
@@ -45,7 +48,7 @@ const CheckPassword = async (req, res, next) => {
 const CheckAdminEmail = async (req, res, next) => {
   const { email } = req.body;
   isHere(email); // Validate that the email is present
-
+ 
   // Search for an admin with the provided email
   const admin = await models.admins.findOne({
     where: {
@@ -55,11 +58,12 @@ const CheckAdminEmail = async (req, res, next) => {
 
   // If admin doesn't exist, throw a notFound error
   if (!admin) {
-    throw new notFound("Incorrect Information", "");
+    throw new notFound("Incorrect Email", "");
   } else {
     req.admin = admin; // Attach the admin object to the request
-    next(); // Proceed to the next middleware
+    next()
   }
+ 
 };
 
 // Middleware to check if the provided password matches the admin's password
@@ -72,7 +76,7 @@ const CheckAdminPassword = async (req, res, next) => {
 
   // If passwords don't match, throw an unAuthanticated error
   if (!match) {
-    throw new unAuthanticated("Incorrect Information", "");
+    throw new unAuthanticated("Incorrect Password", "");
   } else {
     next(); // Proceed to the next middleware
   }

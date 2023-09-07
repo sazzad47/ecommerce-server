@@ -111,6 +111,8 @@ const defineModels = () => {
   });
 };
 
+console.log('sequelize.models', sequelize.models)
+
 async function assertDatabaseConnectionOk() {
   console.log(`Checking database connection...`);
   try {
@@ -118,6 +120,7 @@ async function assertDatabaseConnectionOk() {
     console.log("Sequelize has established DB connection successfully.");
     defineModels(); // Define Sequelize models and relationships
     console.log(`Models defined`);
+    console.log('sequelize.models', sequelize.models.admins);
     console.log(`Database connection OK!`);
   } catch (error) {
     console.log("Unable to connect to the database:");

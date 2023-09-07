@@ -110,11 +110,13 @@ CREATE TABLE ecommerce.product(
 	id SERIAL PRIMARY KEY,
 	category_id integer NOT NULL,
 	name varchar NOT NULL,
+	short_description varchar NULL,
 	price real NOT NULL,
 	stock real NOT NULL,
 	is_real BOOLEAN NOT NULL,
 	description varchar NOT NULL,
 	discount real NOT NULL,
+	views integer default 1,
 	max_order integer default 1,
 	min_order integer default 1,
 	created_at TIMESTAMP,
@@ -128,7 +130,7 @@ CREATE TABLE ecommerce.product_properties(
 	property_id integer NOT NULL,
 	property_value_id integer NOT NULL,
 	product_id integer NOT NULL,
-	price_effect real NULLABLE,
+	price_effect real NULL,
 	created_at TIMESTAMP,
 	updated_at TIMESTAMP
 );
