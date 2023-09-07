@@ -17,8 +17,7 @@ const sequelize = new Sequelize(database, username, password, {
   port: port,
   omitNull: true, // Omit null values from INSERT and UPDATE queries
   autoIncrement: true, // Enable auto-increment for primary keys
-  // logging: false, // Disable logging SQL queries to the console
-  logging: console.log, // Log SQL queries to the console
+  logging: false, // Disable logging SQL queries to the console
   dialectOptions: {
     prependSearchPath: true, // Prepend the schema name in queries
   },
