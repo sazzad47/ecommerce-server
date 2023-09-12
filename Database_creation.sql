@@ -100,7 +100,6 @@ CREATE TABLE ecommerce.categories_properties(
 	id SERIAL PRIMARY KEY,
 	category_id integer NOT NULL,
 	property_id integer NOT NULL,
-	changeable boolean default false,
 	created_at TIMESTAMP,
 	updated_at TIMESTAMP
 );
@@ -110,13 +109,13 @@ CREATE TABLE ecommerce.product(
 	id SERIAL PRIMARY KEY,
 	category_id integer NOT NULL,
 	name varchar NOT NULL,
-	short_description varchar NULL,
 	price real NOT NULL,
 	stock real NOT NULL,
 	is_real BOOLEAN NOT NULL,
 	description varchar NOT NULL,
+	short_description varchar NOT NULL,
+	views integer NOT NULL,
 	discount real NOT NULL,
-	views integer default 1,
 	max_order integer default 1,
 	min_order integer default 1,
 	created_at TIMESTAMP,
@@ -130,7 +129,6 @@ CREATE TABLE ecommerce.product_properties(
 	property_id integer NOT NULL,
 	property_value_id integer NOT NULL,
 	product_id integer NOT NULL,
-	price_effect real NULL,
 	created_at TIMESTAMP,
 	updated_at TIMESTAMP
 );
@@ -157,7 +155,7 @@ id SERIAL PRIMARY KEY,
 /* CART */
 CREATE TABLE ecommerce.cart(
 	id SERIAL PRIMARY KEY,
-	ip VARCHAR NOT NULL,
+	user_id INTEGER NOT NULL,
 	created_at TIMESTAMP,
 	updated_at TIMESTAMP
 );
@@ -175,10 +173,11 @@ id SERIAL PRIMARY KEY,
 
 /* ORDER_ITEMS */
 CREATE TABLE ecommerce.order_items(
-id SERIAL PRIMARY KEY,
+   id SERIAL PRIMARY KEY,
 	product_id INTEGER NOT NULL,
 	order_id INTEGER NOT NULL,
 	quantity REAL default 1.0,
+	total_price real NOT NULL,
 	created_at TIMESTAMP,
 	updated_at TIMESTAMP
 );
@@ -188,7 +187,6 @@ CREATE TABLE ecommerce.order(
 id SERIAL PRIMARY KEY,
 	user_id INTEGER NOT NULL,
 	address_id INTEGER NOT NULL,
-	order_number INTEGER NOT NULL,
 	total INTEGER NOT NULL,
 	status ecommerce.ORDER_STATUS NOT NULL,
 	recived_time TIMESTAMP,
@@ -233,7 +231,7 @@ ALTER TABLE ecommerce.cart
 /* CART_PRODUCTS CONSTRAINTS */
 ALTER TABLE ecommerce.cart_items 
 	ADD CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES ecommerce.product(id) ON DELETE CASCADE,
-	ADD CONSTRAINT fk_cart FOREIGN KEY(cart_id) REFERENCES ecommerce.cart(id) ON DELETE CASCADE
+	ADD CONSTRAINT fk_cart FOREIGN KEY(cart_id) REFERENCES ecommerce.cart(id) ON DELETE CASCADE;
 
 /* ORDER CONSTRAINTS */
 ALTER TABLE ecommerce.order 
@@ -242,8 +240,6 @@ ALTER TABLE ecommerce.order
 	
 
 /* ORDER_ITEMS CONSTRAINTS */
-select * from ecommerce.order_items;
-select * from ecommerce.product;
 
 ALTER TABLE ecommerce.order_items
 	ADD CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES ecommerce.product(id);
@@ -252,3 +248,8 @@ ALTER TABLE ecommerce.order_items
 ALTER TABLE ecommerce.recommendations
 	ADD CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES ecommerce.user(id);
 
+
+-- password is : 99059459Mm@
+
+insert into ecommerce.admins(email,password,name)
+values('adamoswald789@gmail.com' , '$2a$10$.sSJnV.aC1J3kbJrgeUmO.TUS08c4jByqpLiXPnU.5BbxuqTAOTwK' , 'adam' );
