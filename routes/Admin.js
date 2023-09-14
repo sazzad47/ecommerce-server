@@ -19,3 +19,4 @@ router
 router.route("/login").post(CheckAdminEmail, CheckAdminPassword, loginAdmin);
 
 module.exports = router;
+
