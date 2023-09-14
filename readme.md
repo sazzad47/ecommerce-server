@@ -6,21 +6,12 @@ Before you get started, make sure you have the following installed on your syste
 
 - **Node.js**: If you haven't already, you can download and install Node.js from the official website: [Download Node.js](https://nodejs.org/)
 
-1. **Clone the Repository**: Begin by cloning the repository to your local machine using the following command:
-     
-  - git clone git@bitbucket.org:imperialit1/ecommercebackend.git
+1. **Install Dependencies**: 
   
- 2. ** Database ecutions **: execute all querires in Database.sql
+Navigate to root directory of the project and run this command
+npm install
 
- 
-   
-Navigate to Project Directory
-
-    cd ecommerceBackend
-   
-Install Dependencies
-    
-     npm install
+2. ** Database creation **: execute all querires in Database.sql
 
 ## Configuration
    in the .env file replace the current values with the actual values 
@@ -28,7 +19,6 @@ Install Dependencies
    - **CLOUDINARY**: you will need to create an account on cloudinary to use it's api : [CLOUDINARY](https://cloudinary.com/users/register_free)
 
 ## Run the server
-
-      npm start
+  npm start
    
 
